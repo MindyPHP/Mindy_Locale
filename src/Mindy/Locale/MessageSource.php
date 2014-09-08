@@ -22,6 +22,7 @@
  */
 
 namespace Mindy\Locale;
+
 use Mindy\Base\ApplicationComponent;
 use Mindy\Base\Mindy;
 
@@ -52,6 +53,12 @@ abstract class MessageSource extends ApplicationComponent
 
     private $_language;
     private $_messages = [];
+
+    public function init()
+    {
+        parent::init();
+        Mindy::app()->signal->handler($this, 'missingTranslation', [$this, 'missingTranslation']);
+    }
 
     /**
      * Loads the message translation for the specified language and category.
@@ -125,13 +132,10 @@ abstract class MessageSource extends ApplicationComponent
 
         if (isset($this->_messages[$key][$message]) && $this->_messages[$key][$message] !== '') {
             return $this->_messages[$key][$message];
-        } elseif ($this->hasEventHandler('onMissingTranslation')) {
-            $event = new MissingTranslationEvent($this, $category, $message, $language);
-            $this->onMissingTranslation($event);
-            return $event->message;
         } else {
-            return $message;
+            Mindy::app()->signal->send($this, 'missingTranslation', $this);
         }
+        return $message;
     }
 
     /**
@@ -141,8 +145,8 @@ abstract class MessageSource extends ApplicationComponent
      * will be returned by {@link translateMessage}.
      * @param MissingTranslationEvent $event the event parameter
      */
-    public function onMissingTranslation($event)
+    public function missingTranslation($owner)
     {
-        $this->raiseEvent('onMissingTranslation', $event);
+
     }
 }
