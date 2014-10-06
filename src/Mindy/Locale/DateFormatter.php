@@ -23,9 +23,11 @@ namespace Mindy\Locale;
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-use Mindy\Base\Component;
+
 use Mindy\Base\Exception\Exception;
 use Mindy\Base\Mindy;
+use Mindy\Helper\Traits\Accessors;
+use Mindy\Helper\Traits\Configurator;
 
 /**
  * CDateFormatter provides date/time localization functionalities.
@@ -51,8 +53,9 @@ use Mindy\Base\Mindy;
  * @package system.i18n
  * @since 1.0
  */
-class DateFormatter extends Component
+class DateFormatter
 {
+    use Accessors, Configurator;
     /**
      * @var array pattern characters mapping to the corresponding translator methods
      */
