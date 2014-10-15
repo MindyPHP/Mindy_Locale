@@ -184,6 +184,6 @@ class Translate
 
     private static function getSource($source)
     {
-        return self::$_sources[$source];
+        return array_key_exists($source, self::$_sources) ? self::$_sources[$source] : null;
     }
 }
