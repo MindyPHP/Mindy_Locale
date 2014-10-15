@@ -56,10 +56,11 @@ use Mindy\Helper\Traits\Configurator;
 class DateFormatter
 {
     use Accessors, Configurator;
+
     /**
      * @var array pattern characters mapping to the corresponding translator methods
      */
-    private static $_formatters = array(
+    private static $_formatters = [
         'G' => 'formatEra',
         'y' => 'formatYear',
         'M' => 'formatMonth',
@@ -82,7 +83,7 @@ class DateFormatter
         'z' => 'formatTimeZone',
         'Z' => 'formatTimeZone',
         'v' => 'formatTimeZone',
-    );
+    ];
 
     private $_locale;
 
@@ -121,7 +122,7 @@ class DateFormatter
         $date = Timestamp::getDate($time, false, false);
         $tokens = $this->parseFormat($pattern);
         foreach ($tokens as &$token) {
-            if (is_array($token)) {// a callback: method name, sub-pattern
+            if (is_array($token)) { // a callback: method name, sub-pattern
                 $token = $this->{$token[0]}($token[1], $date);
             }
         }

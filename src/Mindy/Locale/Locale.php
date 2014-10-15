@@ -2,29 +2,6 @@
 
 namespace Mindy\Locale;
 
-/**
- * All rights reserved.
- *
- * @author Falaleev Maxim
- * @email max@studio107.ru
- * @version 1.0
- * @company Studio107
- * @site http://studio107.ru
- * @date 09/06/14.06.2014 19:12
- */
-
-/**
- * Locale class file.
- *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @link http://www.yiiframework.com/
- * @copyright 2008-2013 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
-<<<<<<< HEAD
-=======
-
->>>>>>> edb81e82ce45741bfed76f6bf78fbd8666561d27
 use Mindy\Base\Exception\Exception;
 use Mindy\Base\Mindy;
 use Mindy\Helper\Traits\Accessors;
@@ -59,10 +36,7 @@ use Mindy\Helper\Traits\Configurator;
 class Locale
 {
     use Accessors, Configurator;
-<<<<<<< HEAD
 
-=======
->>>>>>> edb81e82ce45741bfed76f6bf78fbd8666561d27
     /**
      * @var string the directory that contains the locale data. If this property is not set,
      * the locale data will be loaded from 'framework/i18n/data'.
@@ -84,7 +58,7 @@ class Locale
      */
     public static function getInstance($id)
     {
-        static $locales = array();
+        static $locales = [];
         if (isset($locales[$id])) {
             return $locales[$id];
         } else {
@@ -99,13 +73,14 @@ class Locale
     {
         static $locales;
         if ($locales === null) {
-            $locales = array();
+            $locales = [];
             $dataPath = self::$dataPath === null ? dirname(__FILE__) . DIRECTORY_SEPARATOR . 'data' : self::$dataPath;
             $folder = @opendir($dataPath);
             while (($file = @readdir($folder)) !== false) {
                 $fullPath = $dataPath . DIRECTORY_SEPARATOR . $file;
-                if (substr($file, -4) === '.php' && is_file($fullPath))
+                if (substr($file, -4) === '.php' && is_file($fullPath)) {
                     $locales[] = substr($file, 0, -4);
+                }
             }
             closedir($folder);
             sort($locales);
@@ -156,8 +131,9 @@ class Locale
      */
     public function getNumberFormatter()
     {
-        if ($this->_numberFormatter === null)
+        if ($this->_numberFormatter === null) {
             $this->_numberFormatter = new NumberFormatter($this);
+        }
         return $this->_numberFormatter;
     }
 
@@ -166,8 +142,9 @@ class Locale
      */
     public function getDateFormatter()
     {
-        if ($this->_dateFormatter === null)
+        if ($this->_dateFormatter === null) {
             $this->_dateFormatter = new DateFormatter($this);
+        }
         return $this->_dateFormatter;
     }
 
@@ -454,8 +431,7 @@ class Locale
      */
     public function getLanguage($id)
     {
-        $id = $this->getLanguageID($id);
-        return $this->getLocaleDisplayName($id, 'languages');
+        return $this->getLocaleDisplayName($this->getLanguageID($id), 'languages');
     }
 
     /**

@@ -1,4 +1,7 @@
 <?php
+
+namespace Mindy\Locale;
+
 /**
  *
  *
@@ -23,7 +26,6 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Mindy\Locale;
 use Mindy\Base\Mindy;
 
 /**
