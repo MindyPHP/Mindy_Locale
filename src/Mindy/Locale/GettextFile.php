@@ -1,7 +1,10 @@
 <?php
+
+namespace Mindy\Locale;
+use Mindy\Helper\Traits\Accessors;
+use Mindy\Helper\Traits\Configurator;
+
 /**
- *
- *
  * All rights reserved.
  *
  * @author Falaleev Maxim
@@ -10,29 +13,24 @@
  * @company Studio107
  * @site http://studio107.ru
  * @date 10/06/14.06.2014 19:31
- */
-
-namespace Mindy\Locale;
-
-/**
+ *
  * CGettextFile class file.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
- */
-use Mindy\Base\Component;
-
-/**
+ *
  * CGettextFile is the base class for representing a Gettext message file.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @package system.i18n.gettext
  * @since 1.0
  */
-abstract class GettextFile extends Component
+abstract class GettextFile
 {
+    use Accessors, Configurator;
+
     /**
      * Loads messages from a file.
      * @param string $file file path

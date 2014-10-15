@@ -23,7 +23,8 @@
  */
 
 namespace Mindy\Locale;
-use Mindy\Base\Component;
+use Mindy\Helper\Traits\Accessors;
+use Mindy\Helper\Traits\Configurator;
 
 /**
  * CNumberFormatter provides number localization functionalities.
@@ -73,8 +74,10 @@ use Mindy\Base\Component;
  * @package system.i18n
  * @since 1.0
  */
-class NumberFormatter extends Component
+class NumberFormatter
 {
+    use Accessors, Configurator;
+
     private $_locale;
     private $_formats = [];
 

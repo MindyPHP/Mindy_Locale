@@ -94,9 +94,11 @@ class PhpMessageSource extends MessageSource
      * Defaults to an empty array, meaning no extensions registered.
      * @since 1.1.13
      */
-    public $extensionPaths = array();
-
-    private $_files = array();
+    public $extensionPaths = [];
+    /**
+     * @var array
+     */
+    private $_files = [];
 
     /**
      * Initializes the application component.
@@ -164,8 +166,9 @@ class PhpMessageSource extends MessageSource
             if (!is_array($messages)) {
                 $messages = [];
             }
-            // TODO
+
             if (isset($cache)) {
+                // TODO
                 $dependency = new FileCacheDependency($messageFile);
                 $cache->set($key, serialize($messages), $this->cachingDuration, $dependency);
             }

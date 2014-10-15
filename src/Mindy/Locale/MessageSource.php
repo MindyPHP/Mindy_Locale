@@ -1,7 +1,11 @@
 <?php
+
+namespace Mindy\Locale;
+
+use Mindy\Helper\Traits\Accessors;
+use Mindy\Helper\Traits\Configurator;
+
 /**
- *
- *
  * All rights reserved.
  *
  * @author Falaleev Maxim
@@ -10,23 +14,7 @@
  * @company Studio107
  * @site http://studio107.ru
  * @date 10/06/14.06.2014 18:47
- */
-
-/**
- * CMessageSource class file.
  *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @link http://www.yiiframework.com/
- * @copyright 2008-2013 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
-
-namespace Mindy\Locale;
-
-use Mindy\Base\ApplicationComponent;
-use Mindy\Base\Mindy;
-
-/**
  * CMessageSource is the base class for message translation repository classes.
  *
  * A message source is an application component that provides message internationalization (i18n).
@@ -42,8 +30,14 @@ use Mindy\Base\Mindy;
  * @package system.i18n
  * @since 1.0
  */
-abstract class MessageSource extends ApplicationComponent
+abstract class MessageSource
 {
+    use Accessors, Configurator;
+
+    /**
+     * @var Translate
+     */
+    public $parent;
     /**
      * @var boolean whether to force message translation when the source and target languages are the same.
      * Defaults to false, meaning translation is only performed when source and target languages are different.
@@ -56,8 +50,7 @@ abstract class MessageSource extends ApplicationComponent
 
     public function init()
     {
-        parent::init();
-        Mindy::app()->signal->handler($this, 'missingTranslation', [$this, 'missingTranslation']);
+//        Mindy::app()->signal->handler($this, 'missingTranslation', [$this, 'missingTranslation']);
     }
 
     /**
@@ -74,7 +67,7 @@ abstract class MessageSource extends ApplicationComponent
      */
     public function getLanguage()
     {
-        return $this->_language === null ? Mindy::app()->sourceLanguage : $this->_language;
+        return $this->_language === null ? $this->parent->sourceLanguage : $this->_language;
     }
 
     /**
@@ -104,7 +97,7 @@ abstract class MessageSource extends ApplicationComponent
     public function translate($category, $message, $language = null)
     {
         if ($language === null) {
-            $language = Mindy::app()->getLanguage();
+            $language = $this->parent->getLanguage();
         }
 
         if ($this->forceTranslation || $language !== $this->getLanguage()) {
@@ -132,8 +125,8 @@ abstract class MessageSource extends ApplicationComponent
 
         if (isset($this->_messages[$key][$message]) && $this->_messages[$key][$message] !== '') {
             return $this->_messages[$key][$message];
-        } else {
-            Mindy::app()->signal->send($this, 'missingTranslation', $this);
+//        } else {
+//            Mindy::app()->signal->send($this, 'missingTranslation', $this, $language, $message);
         }
         return $message;
     }
@@ -143,9 +136,11 @@ abstract class MessageSource extends ApplicationComponent
      * Handlers may log this message or do some default handling.
      * The {@link CMissingTranslationEvent::message} property
      * will be returned by {@link translateMessage}.
-     * @param MissingTranslationEvent $event the event parameter
+     * @param $owner MessageSource
+     * @param $language string
+     * @param $message string
      */
-    public function missingTranslation($owner)
+    public function missingTranslation($owner, $language, $message)
     {
 
     }
