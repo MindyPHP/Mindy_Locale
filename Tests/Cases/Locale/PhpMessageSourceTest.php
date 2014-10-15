@@ -1,5 +1,7 @@
 <?php
 
+namespace Mindy\Locale\Tests;
+
 use Mindy\Helper\Alias;
 use Mindy\Locale\Translate;
 

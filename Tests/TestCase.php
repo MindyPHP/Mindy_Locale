@@ -1,5 +1,9 @@
 <?php
 
+namespace Mindy\Locale\Tests;
+
+use PHPUnit_Framework_TestCase;
+
 /**
  * 
  *
@@ -13,7 +17,7 @@
  * @date 15/10/14.10.2014 15:20
  */
 
-class TestCase extends \PHPUnit_Framework_TestCase
+class TestCase extends PHPUnit_Framework_TestCase
 {
 
 }

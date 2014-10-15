@@ -1,5 +1,7 @@
 <?php
 
+namespace Mindy\Locale\Tests;
+
 use Mindy\Locale\Translate;
 
 class DateFormatterTest extends TestCase
