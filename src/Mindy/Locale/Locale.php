@@ -21,9 +21,10 @@ namespace Mindy\Locale;
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
-use Mindy\Base\Component;
 use Mindy\Base\Exception\Exception;
 use Mindy\Base\Mindy;
+use Mindy\Helper\Traits\Accessors;
+use Mindy\Helper\Traits\Configurator;
 
 /**
  * Locale represents the data relevant to a locale.
@@ -51,8 +52,10 @@ use Mindy\Base\Mindy;
  * @package system.i18n
  * @since 1.0
  */
-class Locale extends Component
+class Locale
 {
+    use Accessors, Configurator;
+
     /**
      * @var string the directory that contains the locale data. If this property is not set,
      * the locale data will be loaded from 'framework/i18n/data'.
@@ -118,7 +121,7 @@ class Locale extends Component
         if (is_file($dataFile)) {
             $this->_data = require($dataFile);
         } else {
-            throw new Exception(Mindy::t('yii', 'Unrecognized locale "{locale}".', array('{locale}' => $id)));
+            throw new Exception(Mindy::t('base', 'Unrecognized locale "{locale}".', array('{locale}' => $id)));
         }
     }
 

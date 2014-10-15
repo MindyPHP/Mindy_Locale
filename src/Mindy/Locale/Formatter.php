@@ -140,7 +140,7 @@ class Formatter extends ApplicationComponent
         if (method_exists($this, $method)) {
             return $this->$method($value);
         } else {
-            throw new Exception(Mindy::t('yii', 'Unknown type "{type}".', array('{type}' => $type)));
+            throw new Exception(Mindy::t('base', 'Unknown type "{type}".', array('{type}' => $type)));
         }
     }
 
@@ -286,15 +286,15 @@ class Formatter extends ApplicationComponent
 
         switch ($i) {
             case 0:
-                return $verbose ? Mindy::t('yii', '{n} byte|{n} bytes', $params) : Mindy::t('yii', '{n} B', $params);
+                return $verbose ? Mindy::t('base', '{n} byte|{n} bytes', $params) : Mindy::t('base', '{n} B', $params);
             case 1:
-                return $verbose ? Mindy::t('yii', '{n} kilobyte|{n} kilobytes', $params) : Mindy::t('yii', '{n} KB', $params);
+                return $verbose ? Mindy::t('base', '{n} kilobyte|{n} kilobytes', $params) : Mindy::t('base', '{n} KB', $params);
             case 2:
-                return $verbose ? Mindy::t('yii', '{n} megabyte|{n} megabytes', $params) : Mindy::t('yii', '{n} MB', $params);
+                return $verbose ? Mindy::t('base', '{n} megabyte|{n} megabytes', $params) : Mindy::t('base', '{n} MB', $params);
             case 3:
-                return $verbose ? Mindy::t('yii', '{n} gigabyte|{n} gigabytes', $params) : Mindy::t('yii', '{n} GB', $params);
+                return $verbose ? Mindy::t('base', '{n} gigabyte|{n} gigabytes', $params) : Mindy::t('base', '{n} GB', $params);
             default:
-                return $verbose ? Mindy::t('yii', '{n} terabyte|{n} terabytes', $params) : Mindy::t('yii', '{n} TB', $params);
+                return $verbose ? Mindy::t('base', '{n} terabyte|{n} terabytes', $params) : Mindy::t('base', '{n} TB', $params);
         }
     }
 }

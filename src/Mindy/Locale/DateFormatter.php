@@ -263,7 +263,7 @@ class DateFormatter extends Component
             case 'LLLLL':
                 return $this->_locale->getMonthName($month, 'narrow', true);
             default:
-                throw new Exception(Mindy::t('yii', 'The pattern for month must be "M", "MM", "MMM", "MMMM", "L", "LL", "LLL" or "LLLL".'));
+                throw new Exception(Mindy::t('base', 'The pattern for month must be "M", "MM", "MMM", "MMMM", "L", "LL", "LLL" or "LLLL".'));
         }
     }
 
@@ -283,7 +283,7 @@ class DateFormatter extends Component
         } elseif ($pattern === 'dd') {
             return str_pad($day, 2, '0', STR_PAD_LEFT);
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for day of the month must be "d" or "dd".'));
+            throw new Exception(Mindy::t('base', 'The pattern for day of the month must be "d" or "dd".'));
         }
     }
 
@@ -300,7 +300,7 @@ class DateFormatter extends Component
         if (($n = strlen($pattern)) <= 3) {
             return str_pad($day, $n, '0', STR_PAD_LEFT);
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for day in year must be "D", "DD" or "DDD".'));
+            throw new Exception(Mindy::t('base', 'The pattern for day in year must be "D", "DD" or "DDD".'));
         }
     }
 
@@ -317,7 +317,7 @@ class DateFormatter extends Component
         if ($pattern === 'F') {
             return (int)(($date['mday'] + 6) / 7);
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for day in month must be "F".'));
+            throw new Exception(Mindy::t('base', 'The pattern for day in month must be "F".'));
         }
     }
 
@@ -358,7 +358,7 @@ class DateFormatter extends Component
             case 'ccccc':
                 return $this->_locale->getWeekDayName($day, 'narrow', true);
             default:
-                throw new Exception(Mindy::t('yii', 'The pattern for day of the week must be "E", "EE", "EEE", "EEEE", "EEEEE", "e", "ee", "eee", "eeee", "eeeee", "c", "cccc" or "ccccc".'));
+                throw new Exception(Mindy::t('base', 'The pattern for day of the week must be "E", "EE", "EEE", "EEEE", "EEEEE", "e", "ee", "eee", "eeee", "eeeee", "c", "cccc" or "ccccc".'));
         }
     }
 
@@ -378,7 +378,7 @@ class DateFormatter extends Component
                 return $this->_locale->getAMName();
             }
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for AM/PM marker must be "a".'));
+            throw new Exception(Mindy::t('base', 'The pattern for AM/PM marker must be "a".'));
         }
     }
 
@@ -398,7 +398,7 @@ class DateFormatter extends Component
         } elseif ($pattern === 'HH') {
             return str_pad($hour, 2, '0', STR_PAD_LEFT);
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for 24 hour format must be "H" or "HH".'));
+            throw new Exception(Mindy::t('base', 'The pattern for 24 hour format must be "H" or "HH".'));
         }
     }
 
@@ -419,7 +419,7 @@ class DateFormatter extends Component
         } elseif ($pattern === 'hh') {
             return str_pad($hour, 2, '0', STR_PAD_LEFT);
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for 12 hour format must be "h" or "hh".'));
+            throw new Exception(Mindy::t('base', 'The pattern for 12 hour format must be "h" or "hh".'));
         }
     }
 
@@ -439,7 +439,7 @@ class DateFormatter extends Component
         } elseif ($pattern === 'kk') {
             return str_pad($hour, 2, '0', STR_PAD_LEFT);
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for hour in day must be "k" or "kk".'));
+            throw new Exception(Mindy::t('base', 'The pattern for hour in day must be "k" or "kk".'));
         }
     }
 
@@ -459,7 +459,7 @@ class DateFormatter extends Component
         } elseif ($pattern === 'KK') {
             return str_pad($hour, 2, '0', STR_PAD_LEFT);
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for hour in AM/PM must be "K" or "KK".'));
+            throw new Exception(Mindy::t('base', 'The pattern for hour in AM/PM must be "K" or "KK".'));
         }
     }
 
@@ -479,7 +479,7 @@ class DateFormatter extends Component
         } elseif ($pattern === 'mm') {
             return str_pad($minutes, 2, '0', STR_PAD_LEFT);
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for minutes must be "m" or "mm".'));
+            throw new Exception(Mindy::t('base', 'The pattern for minutes must be "m" or "mm".'));
         }
     }
 
@@ -499,7 +499,7 @@ class DateFormatter extends Component
         } elseif ($pattern === 'ss') {
             return str_pad($seconds, 2, '0', STR_PAD_LEFT);
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for seconds must be "s" or "ss".'));
+            throw new Exception(Mindy::t('base', 'The pattern for seconds must be "s" or "ss".'));
         }
     }
 
@@ -515,7 +515,7 @@ class DateFormatter extends Component
         if ($pattern === 'w') {
             return @date('W', @mktime(0, 0, 0, $date['mon'], $date['mday'], $date['year']));
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for week in year must be "w".'));
+            throw new Exception(Mindy::t('base', 'The pattern for week in year must be "w".'));
         }
     }
 
@@ -532,7 +532,7 @@ class DateFormatter extends Component
             $weekDay = date('N', mktime(0, 0, 0, $date['mon'], 1, $date['year']));
             return floor(($weekDay + $date['mday'] - 2) / 7) + 1;
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for week in month must be "W".'));
+            throw new Exception(Mindy::t('base', 'The pattern for week in month must be "W".'));
         }
     }
 
@@ -551,7 +551,7 @@ class DateFormatter extends Component
         } elseif ($pattern[0] === 'Z') {
             return @date('O', @mktime($date['hours'], $date['minutes'], $date['seconds'], $date['mon'], $date['mday'], $date['year']));
         } else {
-            throw new Exception(Mindy::t('yii', 'The pattern for time zone must be "z" or "v".'));
+            throw new Exception(Mindy::t('base', 'The pattern for time zone must be "z" or "v".'));
         }
     }
 
@@ -576,7 +576,7 @@ class DateFormatter extends Component
             case 'GGGGG':
                 return $this->_locale->getEraName($era, 'narrow');
             default:
-                throw new Exception(Mindy::t('yii', 'The pattern for era must be "G", "GG", "GGG", "GGGG" or "GGGGG".'));
+                throw new Exception(Mindy::t('base', 'The pattern for era must be "G", "GG", "GGG", "GGGG" or "GGGGG".'));
         }
     }
 }

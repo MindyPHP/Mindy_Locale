@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Message translations.
  *
@@ -16,7 +17,8 @@
  *
  * NOTE, this file must be saved in UTF-8 encoding.
  */
-return array (
+
+return [
   '{class} must specify "model" and "{attribute}" or "{name}" property values.' => 'Η κλάση {class} πρέπει να ορίσει τις ιδιότητες "model" και "{attribute}" ή "{name}".',
   'Are you sure you want to delete this item?' => 'Είστε σίγουρος ότι θέλετε να διαγράψετε το αντικείμενο;',
   'Delete' => 'Διαγραφή',
@@ -38,4 +40,4 @@ return array (
   'Total 1 result.|Total {count} results.' => 'Συνολικά 1 αποτέλεσμα.|Συνολικά {count} αποτελέσματα.',
   'Update' => 'Ενημέρωση',
   'View' => 'Εμφάνιση',
-);
+];

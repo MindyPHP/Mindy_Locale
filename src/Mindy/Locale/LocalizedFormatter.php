@@ -95,7 +95,7 @@ class LocalizedFormatter extends Formatter
      */
     public function formatBoolean($value)
     {
-        return $value ? Mindy::t('yii', 'Yes') : Mindy::t('yii', 'No');
+        return $value ? Mindy::t('base', 'Yes') : Mindy::t('base', 'No');
     }
 
     /**

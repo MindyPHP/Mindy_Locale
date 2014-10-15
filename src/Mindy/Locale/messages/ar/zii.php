@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Message translations.
  *
@@ -13,24 +14,25 @@
  *
  * NOTE, this file must be saved in UTF-8 encoding.
  */
-return array (
-  'Home' => 'الرئيسية',
-  'The button type "{type}" is not supported.' => 'نوع الزر "{type}" غير مدعوم.',
-  'Are you sure you want to delete this item?' => 'هل أنت متأكد أنك تريد حذف هذا العنصر؟',
-  'Delete' => 'حذف',
-  'Displaying {start}-{end} of 1 result.|Displaying {start}-{end} of {count} results.' => 'عرض {start}-{end} من {count}.',
-  'Either "name" or "value" must be specified for CDataColumn.' => 'يجب تحديد إما "name" أو "value" لـ CDataColumn.',
-  'No results found.' => 'لا توجد نتائج.',
-  'Not set' => 'لم يتم ضبطه',
-  'Please specify the "attributes" property.' => 'يرجى تحديد خاصية "attributes".',
-  'Please specify the "data" property.' => 'يرجى تحديد خاصية "data".',
-  'Sort by: ' => 'فرز حسب:',
-  'The "dataProvider" property cannot be empty.' => 'لايمكن ترك خاصية "dataProvider" فارغة.',
-  'The attribute must be specified in the format of "Name:Type:Label", where "Type" and "Label" are optional.' => 'يجب تحديد السمة في التنسيق "Name:Type:Label"، حيث أن "Type" و "Label" اختيارية.',
-  'The column must be specified in the format of "Name:Type:Label", where "Type" and "Label" are optional.' => 'يجب تحديد العمود في التنسيق "Name:Type:Label"، حيث أن "Type" و "Label" اختيارية.',
-  'The property "itemView" cannot be empty.' => 'لايمكن ترك خاصية "itemView" فارغة.',
-  'Total 1 result.|Total {count} results.' => 'المجموع {count} نتيجة/نتائج.',
-  'Update' => 'حدّث',
-  'View' => 'اعرض',
-  '{class} must specify "model" and "attribute" or "name" property values.' => '{class} يجب تحديد قيم خصائص "model" و "attribute" أو "name".',
-);
+
+return [
+    'Home' => 'الرئيسية',
+    'The button type "{type}" is not supported.' => 'نوع الزر "{type}" غير مدعوم.',
+    'Are you sure you want to delete this item?' => 'هل أنت متأكد أنك تريد حذف هذا العنصر؟',
+    'Delete' => 'حذف',
+    'Displaying {start}-{end} of 1 result.|Displaying {start}-{end} of {count} results.' => 'عرض {start}-{end} من {count}.',
+    'Either "name" or "value" must be specified for CDataColumn.' => 'يجب تحديد إما "name" أو "value" لـ CDataColumn.',
+    'No results found.' => 'لا توجد نتائج.',
+    'Not set' => 'لم يتم ضبطه',
+    'Please specify the "attributes" property.' => 'يرجى تحديد خاصية "attributes".',
+    'Please specify the "data" property.' => 'يرجى تحديد خاصية "data".',
+    'Sort by: ' => 'فرز حسب:',
+    'The "dataProvider" property cannot be empty.' => 'لايمكن ترك خاصية "dataProvider" فارغة.',
+    'The attribute must be specified in the format of "Name:Type:Label", where "Type" and "Label" are optional.' => 'يجب تحديد السمة في التنسيق "Name:Type:Label"، حيث أن "Type" و "Label" اختيارية.',
+    'The column must be specified in the format of "Name:Type:Label", where "Type" and "Label" are optional.' => 'يجب تحديد العمود في التنسيق "Name:Type:Label"، حيث أن "Type" و "Label" اختيارية.',
+    'The property "itemView" cannot be empty.' => 'لايمكن ترك خاصية "itemView" فارغة.',
+    'Total 1 result.|Total {count} results.' => 'المجموع {count} نتيجة/نتائج.',
+    'Update' => 'حدّث',
+    'View' => 'اعرض',
+    '{class} must specify "model" and "attribute" or "name" property values.' => '{class} يجب تحديد قيم خصائص "model" و "attribute" أو "name".',
+];
