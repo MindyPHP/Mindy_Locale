@@ -21,6 +21,10 @@ namespace Mindy\Locale;
  * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> edb81e82ce45741bfed76f6bf78fbd8666561d27
 use Mindy\Base\Exception\Exception;
 use Mindy\Base\Mindy;
 use Mindy\Helper\Traits\Accessors;
@@ -55,7 +59,10 @@ use Mindy\Helper\Traits\Configurator;
 class Locale
 {
     use Accessors, Configurator;
+<<<<<<< HEAD
 
+=======
+>>>>>>> edb81e82ce45741bfed76f6bf78fbd8666561d27
     /**
      * @var string the directory that contains the locale data. If this property is not set,
      * the locale data will be loaded from 'framework/i18n/data'.
