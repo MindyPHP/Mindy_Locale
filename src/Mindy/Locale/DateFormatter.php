@@ -24,7 +24,7 @@ namespace Mindy\Locale;
  * @license http://www.yiiframework.com/license/
  */
 
-use Mindy\Base\Exception\Exception;
+use Mindy\Exception\Exception;
 use Mindy\Base\Mindy;
 use Mindy\Helper\Traits\Accessors;
 use Mindy\Helper\Traits\Configurator;

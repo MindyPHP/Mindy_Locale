@@ -14,9 +14,11 @@
 
 namespace Mindy\Locale;
 
+use Mindy\Helper\Alias;
 use Mindy\Helper\Creator;
 use Mindy\Helper\Traits\Accessors;
 use Mindy\Helper\Traits\Singleton;
+use ReflectionProperty;
 
 class Translate
 {
@@ -30,6 +32,10 @@ class Translate
      * @var array
      */
     public $source = [];
+    /**
+     * @var string the charset
+     */
+    public $charset = 'utf-8';
     /**
      * @var string the language that the application is written in. This mainly refers to
      * the language that the messages and view files are in. Defaults to 'en_us' (US English).
@@ -107,6 +113,65 @@ class Translate
     public function getLocale($localeID = null)
     {
         return call_user_func_array([$this->localeClass, 'getInstance'], [$localeID === null ? $this->getLanguage() : $localeID]);
+    }
+
+    /**
+     * Returns the directory that contains the locale data.
+     * @return string the directory that contains the locale data. It defaults to 'framework/i18n/data'.
+     * @since 1.1.0
+     */
+    public function getLocaleDataPath()
+    {
+        $vars = get_class_vars($this->localeClass);
+        if (empty($vars['dataPath'])) {
+            return Alias::get('system.i18n.data');
+        }
+        return $vars['dataPath'];
+    }
+
+    /**
+     * Sets the directory that contains the locale data.
+     * @param string $value the directory that contains the locale data.
+     * @since 1.1.0
+     */
+    public function setLocaleDataPath($value)
+    {
+        $property = new ReflectionProperty($this->localeClass, 'dataPath');
+        $property->setValue($value);
+    }
+
+    /**
+     * Returns the localized version of a specified file.
+     *
+     * The searching is based on the specified language code. In particular,
+     * a file with the same name will be looked for under the subdirectory
+     * named as the locale ID. For example, given the file "path/to/view.php"
+     * and locale ID "zh_cn", the localized file will be looked for as
+     * "path/to/zh_cn/view.php". If the file is not found, the original file
+     * will be returned.
+     *
+     * For consistency, it is recommended that the locale ID is given
+     * in lower case and in the format of LanguageID_RegionID (e.g. "en_us").
+     *
+     * @param string $srcFile the original file
+     * @param string $srcLanguage the language that the original file is in. If null, the application {@link sourceLanguage source language} is used.
+     * @param string $language the desired language that the file should be localized to. If null, the {@link getLanguage application language} will be used.
+     * @return string the matching localized file. The original file is returned if no localized version is found
+     * or if source language is the same as the desired language.
+     */
+    public function findLocalizedFile($srcFile, $srcLanguage = null, $language = null)
+    {
+        if ($srcLanguage === null) {
+            $srcLanguage = $this->sourceLanguage;
+        }
+        if ($language === null) {
+            $language = $this->getLanguage();
+        }
+        if ($language === $srcLanguage) {
+            return $srcFile;
+        }
+        $desiredFile = dirname($srcFile) . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . basename($srcFile);
+        return is_file($desiredFile) ? $desiredFile : $srcFile;
     }
 
     /**

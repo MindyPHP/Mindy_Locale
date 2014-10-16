@@ -24,7 +24,7 @@ namespace Mindy\Locale;
  */
 use DateTime;
 use Mindy\Base\ApplicationComponent;
-use Mindy\Base\Exception\Exception;
+use Mindy\Exception\Exception;
 use Mindy\Base\Mindy;
 
 /**
