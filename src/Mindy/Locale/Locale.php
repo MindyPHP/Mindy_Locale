@@ -3,7 +3,6 @@
 namespace Mindy\Locale;
 
 use Mindy\Exception\Exception;
-use Mindy\Base\Mindy;
 use Mindy\Helper\Traits\Accessors;
 use Mindy\Helper\Traits\Configurator;
 
@@ -103,7 +102,7 @@ class Locale
         if (is_file($dataFile)) {
             $this->_data = require($dataFile);
         } else {
-            throw new Exception(Mindy::t('base', 'Unrecognized locale "{locale}".', array('{locale}' => $id)));
+            throw new Exception(strtr('Unrecognized locale "{locale}".', ['{locale}' => $id]));
         }
     }
 
@@ -325,7 +324,7 @@ class Locale
      */
     public function getPluralRules()
     {
-        return isset($this->_data['pluralRules']) ? $this->_data['pluralRules'] : array(0 => 'true');
+        return isset($this->_data['pluralRules']) ? $this->_data['pluralRules'] : [0 => 'true'];
     }
 
     /**
