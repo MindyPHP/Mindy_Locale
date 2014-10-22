@@ -67,41 +67,51 @@ class BaseTest extends TestCase
     // Plural: 'msg1|msg2|msg3'
     public function testPlural()
     {
+        $t = Translate::getInstance([
+            'sourceLanguage' => 'es',
+            'source' => [
+                'messages' => [
+                    'class' => '\Mindy\Locale\PhpMessageSource',
+                    'basePath' => dirname(__FILE__) . '/../../data',
+                    // 'forceTranslation' => true,
+                ],
+            ],
+        ]);
         // CLDR
-        $this->t->setLanguage('ru');
+        $t->setLanguage('ru');
 
         // array notation
-        $this->assertEquals('огурец', $this->t->t('test', 'cucumber|cucumbers', array(1)));
+        $this->assertEquals('огурец', $t->t('test', 'cucumber|cucumbers', [1]));
 
         //ru
-        $this->assertEquals('огурец', $this->t->t('test', 'cucumber|cucumbers', 1));
-        $this->assertEquals('огурец', $this->t->t('test', 'cucumber|cucumbers', 101));
-        $this->assertEquals('огурец', $this->t->t('test', 'cucumber|cucumbers', 51));
-        $this->assertEquals('огурца', $this->t->t('test', 'cucumber|cucumbers', 2));
-        $this->assertEquals('огурца', $this->t->t('test', 'cucumber|cucumbers', 62));
-        $this->assertEquals('огурца', $this->t->t('test', 'cucumber|cucumbers', 104));
-        $this->assertEquals('огурцов', $this->t->t('test', 'cucumber|cucumbers', 5));
-        $this->assertEquals('огурцов', $this->t->t('test', 'cucumber|cucumbers', 78));
-        $this->assertEquals('огурцов', $this->t->t('test', 'cucumber|cucumbers', 320));
-        $this->assertEquals('огурцов', $this->t->t('test', 'cucumber|cucumbers', 0));
+        $this->assertEquals('огурец', $t->t('test', 'cucumber|cucumbers', 1));
+        $this->assertEquals('огурец', $t->t('test', 'cucumber|cucumbers', 101));
+        $this->assertEquals('огурец', $t->t('test', 'cucumber|cucumbers', 51));
+        $this->assertEquals('огурца', $t->t('test', 'cucumber|cucumbers', 2));
+        $this->assertEquals('огурца', $t->t('test', 'cucumber|cucumbers', 62));
+        $this->assertEquals('огурца', $t->t('test', 'cucumber|cucumbers', 104));
+        $this->assertEquals('огурцов', $t->t('test', 'cucumber|cucumbers', 5));
+        $this->assertEquals('огурцов', $t->t('test', 'cucumber|cucumbers', 78));
+        $this->assertEquals('огурцов', $t->t('test', 'cucumber|cucumbers', 320));
+        $this->assertEquals('огурцов', $t->t('test', 'cucumber|cucumbers', 0));
 
         // fractions (you should specify fourh variant to use these in Russian)
-        $this->assertEquals('огурца', $this->t->t('test', 'cucumber|cucumbers', 1.5));
+        $this->assertEquals('огурца', $t->t('test', 'cucumber|cucumbers', 1.5));
 
         // en
-        $this->t->setLanguage('en');
+        $t->setLanguage('en');
 
-        $this->assertEquals('cucumber', $this->t->t('test', 'cucumber|cucumbers', 1));
-        $this->assertEquals('cucumbers', $this->t->t('test', 'cucumber|cucumbers', 2));
-        $this->assertEquals('cucumbers', $this->t->t('test', 'cucumber|cucumbers', 0));
+        $this->assertEquals('cucumber', $t->t('test', 'cucumber|cucumbers', 1));
+        $this->assertEquals('cucumbers', $t->t('test', 'cucumber|cucumbers', 2));
+        $this->assertEquals('cucumbers', $t->t('test', 'cucumber|cucumbers', 0));
 
         // short forms
-        $this->t->setLanguage('ru');
+        $t->setLanguage('ru');
 
-        $this->assertEquals('огурец', $this->t->t('test', 'cucumber|cucumbers', 1));
+        $this->assertEquals('огурец', $t->t('test', 'cucumber|cucumbers', 1));
 
         // explicit params
-        $this->assertEquals('огурец', $this->t->t('test', 'cucumber|cucumbers', array(0 => 1)));
+        $this->assertEquals('огурец', $t->t('test', 'cucumber|cucumbers', array(0 => 1)));
     }
 
     public function testPluralPlaceholders()
