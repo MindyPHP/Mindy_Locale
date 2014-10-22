@@ -20,7 +20,7 @@
 
     <testsuites>
         <testsuite name="Locale">
-            <directory>./Tests/Cases/Locale/</directory>
+            <directory>Tests/Cases/Locale/</directory>
         </testsuite>
     </testsuites>
 
@@ -32,12 +32,14 @@
 
     <filter>
         <whitelist>
-            <directory suffix=".php">src/</directory>
+            <directory suffix=".php">../src/</directory>
         </whitelist>
     </filter>
 
+    <!--
     <logging>
-        <!--<log type="coverage-html" target="build/logs/coverage" charset="UTF-8"-->
-             <!--yui="true" highlight="true" lowUpperBound="50" highLowerBound="80"/>-->
+        <log type="coverage-html" target="build/logs/coverage" charset="UTF-8"
+             yui="true" highlight="true" lowUpperBound="50" highLowerBound="80"/>
     </logging>
+    -->
 </phpunit>
