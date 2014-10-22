@@ -10,6 +10,7 @@ before_script:
   - composer self-update
   - composer install
   - composer install --dev --no-interaction
+  - sh ./up.sh
 
 script:
   - mkdir -p build/logs
