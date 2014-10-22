@@ -19,7 +19,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="Locale">
+        <testsuite name="LocaleTestSuite">
             <directory>Tests/Cases/Locale/</directory>
         </testsuite>
     </testsuites>
