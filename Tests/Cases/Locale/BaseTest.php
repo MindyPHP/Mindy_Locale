@@ -31,6 +31,7 @@ class BaseTest extends TestCase
                 ],
             ],
         ]);
+        var_dump(realpath(dirname(__FILE__) . '/../../data'));
     }
 
     public function tearDown()
