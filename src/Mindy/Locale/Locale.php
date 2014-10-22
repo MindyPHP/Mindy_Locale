@@ -99,6 +99,7 @@ class Locale
         $this->_id = self::getCanonicalID($id);
         $dataPath = self::$dataPath === null ? dirname(__FILE__) . DIRECTORY_SEPARATOR . 'data' : self::$dataPath;
         $dataFile = $dataPath . DIRECTORY_SEPARATOR . $this->_id . '.php';
+        var_dump($dataFile);
         if (is_file($dataFile)) {
             $this->_data = require($dataFile);
         } else {
