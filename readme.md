@@ -4,5 +4,3 @@
 [![Coverage Status](https://img.shields.io/coveralls/studio107/Mindy_Locale.svg)](https://coveralls.io/r/studio107/Mindy_Locale)
 [![Latest Stable Version](https://poser.pugx.org/mindy/locale/v/stable.svg)](https://packagist.org/packages/mindy/locale)
 [![Total Downloads](https://poser.pugx.org/mindy/locale/downloads.svg)](https://packagist.org/packages/mindy/locale)
-[![Latest Unstable Version](https://poser.pugx.org/mindy/locale/v/unstable.svg)](https://packagist.org/packages/mindy/locale)
-[![License](https://poser.pugx.org/mindy/locale/license.svg)](https://packagist.org/packages/mindy/locale)

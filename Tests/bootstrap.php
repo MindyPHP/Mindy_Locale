@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('UTC');
+
 if (is_dir(__DIR__ . '/../vendor')) {
     include(__DIR__ . '/../vendor/autoload.php');
 }

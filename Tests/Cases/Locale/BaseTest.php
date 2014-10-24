@@ -31,7 +31,6 @@ class BaseTest extends TestCase
                 ],
             ],
         ]);
-        var_dump(realpath(dirname(__FILE__) . '/../../data'));
     }
 
     public function tearDown()
@@ -72,7 +71,7 @@ class BaseTest extends TestCase
         $this->t->setLanguage('ru');
 
         // array notation
-        $this->assertEquals('огурец', $this->t->t('test', 'cucumber|cucumbers', array(1)));
+        $this->assertEquals('огурец', $this->t->t('test', 'cucumber|cucumbers', [1]));
 
         //ru
         $this->assertEquals('огурец', $this->t->t('test', 'cucumber|cucumbers', 1));

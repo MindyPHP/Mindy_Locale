@@ -5,8 +5,6 @@ namespace Mindy\Locale\Tests;
 use PHPUnit_Framework_TestCase;
 
 /**
- * 
- *
  * All rights reserved.
  * 
  * @author Falaleev Maxim
@@ -16,7 +14,6 @@ use PHPUnit_Framework_TestCase;
  * @site http://studio107.ru
  * @date 15/10/14.10.2014 15:20
  */
-
 class TestCase extends PHPUnit_Framework_TestCase
 {
 
