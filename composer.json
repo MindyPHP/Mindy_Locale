@@ -4,13 +4,13 @@
     "version": "0.1",
     "license": "MIT",
     "autoload": {
-        "psr-0": {
-            "": "src/"
+        "psr-4": {
+            "Mindy\\Locale\\": "src/Mindy/Locale"
         }
     },
     "require": {
         "php": ">=5.4",
-        "mindy/helper": "dev-master"
+        "mindy/helper": "0.1"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master"
