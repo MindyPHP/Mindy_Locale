@@ -32,7 +32,7 @@ namespace Mindy\Locale;
  * The PHP expressions will be evaluated using {@link evaluate}.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @package Mindy/Locale
+ * @package Mindy\Locale
  */
 class ChoiceFormat
 {

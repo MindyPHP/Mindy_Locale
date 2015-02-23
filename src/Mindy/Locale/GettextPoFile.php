@@ -6,7 +6,7 @@ namespace Mindy\Locale;
  * CGettextPoFile represents a PO Gettext message file.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @package Mindy/Locale
+ * @package Mindy\Locale
  * @since 1.0
  */
 class GettextPoFile extends GettextFile
