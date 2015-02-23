@@ -1,16 +1,4 @@
 <?php
-/**
- *
- *
- * All rights reserved.
- *
- * @author Falaleev Maxim
- * @email max@studio107.ru
- * @version 1.0
- * @company Studio107
- * @site http://studio107.ru
- * @date 10/06/14.06.2014 18:55
- */
 
 namespace Mindy\Locale;
 
@@ -44,7 +32,7 @@ namespace Mindy\Locale;
  * The PHP expressions will be evaluated using {@link evaluate}.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @package system.i18n
+ * @package Mindy/Locale
  */
 class ChoiceFormat
 {

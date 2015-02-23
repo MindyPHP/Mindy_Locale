@@ -1,25 +1,4 @@
 <?php
-/**
- *
- *
- * All rights reserved.
- *
- * @author Falaleev Maxim
- * @email max@studio107.ru
- * @version 1.0
- * @company Studio107
- * @site http://studio107.ru
- * @date 10/06/14.06.2014 16:56
- */
-
-/**
- * CTimestamp class file.
- *
- * @author Wei Zhuo <weizhuo[at]gamil[dot]com>
- * @link http://www.yiiframework.com/
- * @copyright 2008-2013 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
 
 namespace Mindy\Locale;
 
@@ -42,7 +21,7 @@ namespace Mindy\Locale;
  * to the PHP manual for more information.
  *
  * @author Wei Zhuo <weizhuo[at]gmail[dot]com>
- * @package system.utils
+ * @package Mindy\Locale
  * @since 1.0
  */
 class Timestamp

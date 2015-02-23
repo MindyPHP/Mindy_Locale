@@ -29,7 +29,7 @@ use Mindy\Helper\Traits\Configurator;
  * @property array $pluralRules Plural forms expressions.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @package system.i18n
+ * @package Mindy\Locale
  * @since 1.0
  */
 class Locale

@@ -1,16 +1,4 @@
 <?php
-/**
- *
- *
- * All rights reserved.
- *
- * @author Falaleev Maxim
- * @email max@studio107.ru
- * @version 1.0
- * @company Studio107
- * @site http://studio107.ru
- * @date 15/10/14.10.2014 15:27
- */
 
 namespace Mindy\Locale;
 
@@ -20,6 +8,10 @@ use Mindy\Helper\Traits\Accessors;
 use Mindy\Helper\Traits\Singleton;
 use ReflectionProperty;
 
+/**
+ * Class Translate
+ * @package Mindy\Locale
+ */
 class Translate
 {
     use Accessors, Singleton;
@@ -52,7 +44,7 @@ class Translate
 
     public function __get($name)
     {
-        if(isset(self::$_sources[$name])) {
+        if (isset(self::$_sources[$name])) {
             return self::$_sources[$name];
         }
 

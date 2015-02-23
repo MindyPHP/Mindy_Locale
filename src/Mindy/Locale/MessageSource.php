@@ -27,7 +27,7 @@ use Mindy\Helper\Traits\Configurator;
  * Defaults to {@link CApplication::language application language}.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @package system.i18n
+ * @package Mindy\Locale
  * @since 1.0
  */
 abstract class MessageSource

@@ -1,27 +1,7 @@
 <?php
-/**
- *
- *
- * All rights reserved.
- *
- * @author Falaleev Maxim
- * @email max@studio107.ru
- * @version 1.0
- * @company Studio107
- * @site http://studio107.ru
- * @date 10/06/14.06.2014 19:44
- */
 
 namespace Mindy\Locale;
 
-/**
- * CLocalizedFormatter class file.
- *
- * @author Carsten Brandt <mail@cebe.cc>
- * @link http://www.yiiframework.com/
- * @copyright 2008-2013 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
 use Mindy\Base\Mindy;
 
 /**
@@ -46,7 +26,7 @@ use Mindy\Base\Mindy;
  * </code>
  *
  * @author Carsten Brandt <mail@cebe.cc>
- * @package system.utils
+ * @package Mindy\Locale
  * @since 1.1.14
  */
 class LocalizedFormatter extends Formatter
