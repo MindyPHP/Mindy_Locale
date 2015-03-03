@@ -10,7 +10,7 @@
     },
     "require": {
         "php": ">=5.4",
-        "mindy/helper": "0.1"
+        "mindy/helper": "0.*"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master"
