@@ -70,4 +70,8 @@ return [
      * Url validator
      */
     'Is not a valid URL' => 'Некорректный URL',
+    /**
+     * Recaptcha validator
+     */
+    'Incorrect captcha. Please try again.' => 'Ошибка проверки. Пожалуйста повторите еще раз.',
 ];
