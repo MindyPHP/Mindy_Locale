@@ -3,9 +3,10 @@
 namespace Mindy\Locale;
 
 use DateTime;
-use Mindy\Base\ApplicationComponent;
 use Mindy\Exception\Exception;
 use Mindy\Base\Mindy;
+use Mindy\Helper\Traits\Accessors;
+use Mindy\Helper\Traits\Configurator;
 
 /**
  * CFormatter provides a set of commonly used data formatting methods.
@@ -45,8 +46,10 @@ use Mindy\Base\Mindy;
  * @package Mindy\Locale
  * @since 1.1.0
  */
-class Formatter extends ApplicationComponent
+class Formatter
 {
+    use Configurator, Accessors;
+
     /**
      * @var string the format string to be used to format a date using PHP date() function. Defaults to 'Y/m/d'.
      */
