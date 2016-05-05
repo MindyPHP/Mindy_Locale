@@ -1,7 +1,6 @@
 {
   "name": "mindy/locale",
   "homepage": "https://github.com/studio107/Mindy_Locale",
-  "version": "1.0",
   "license": "BSD",
   "autoload": {
     "psr-4": {
