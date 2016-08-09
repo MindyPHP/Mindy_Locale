@@ -5,7 +5,9 @@ namespace Mindy\Locale;
 use Mindy\Helper\Alias;
 use Mindy\Helper\Creator;
 use Mindy\Helper\Traits\Accessors;
-use Mindy\Helper\Traits\Singleton;
+use Mindy\Helper\Traits\Configurator;
+use Mindy\Locale\Formatter\ChoiceFormat;
+use Mindy\Locale\Loader\PhpSourceLoader;
 use ReflectionProperty;
 
 /**
@@ -14,12 +16,8 @@ use ReflectionProperty;
  */
 class Translate
 {
-    use Accessors, Singleton;
+    use Accessors, Configurator;
 
-    /**
-     * @var string the class used to get locale data. Defaults to 'CLocale'.
-     */
-    public $localeClass = 'Mindy\Locale\Locale';
     /**
      * @var array
      */
@@ -41,6 +39,27 @@ class Translate
      * @var string
      */
     private $_language;
+    /**
+     * @var Translate
+     */
+    private static $_instance;
+
+    /**
+     * @param array $config
+     * @return Translate
+     */
+    final public static function getInstance(array $config = [])
+    {
+        if (self::$_instance === null) {
+            self::$_instance = new self($config);
+        }
+        return self::$_instance;
+    }
+
+    public static function clearInstance()
+    {
+        self::$_instance = null;
+    }
 
     public function __get($name)
     {
@@ -53,20 +72,13 @@ class Translate
 
     public function init()
     {
-        if (!array_key_exists('coreMessages', $this->source)) {
-            $this->source['coreMessages'] = [
-                'class' => '\Mindy\Locale\PhpMessageSource',
-                'language' => 'en_us',
-            ];
-        }
-
         if (!array_key_exists('messages', $this->source)) {
             $this->source['messages'] = [
-                'class' => '\Mindy\Locale\PhpMessageSource',
+                'class' => PhpSourceLoader::class,
             ];
         }
         foreach ($this->source as $name => $source) {
-            $params = is_array($source) ? array_merge(['parent' => $this], $source) : $source;
+            $params = is_array($source) ? array_merge(['translate' => $this], $source) : $source;
             self::$_sources[$name] = Creator::createObject($params);
         }
     }
@@ -104,7 +116,7 @@ class Translate
      */
     public function getLocale($localeID = null)
     {
-        return call_user_func_array([$this->localeClass, 'getInstance'], [$localeID === null ? $this->getLanguage() : $localeID]);
+        return Locale::getInstance($localeID === null ? $this->getLanguage() : $localeID);
     }
 
     /**
@@ -200,14 +212,10 @@ class Translate
      * @return string the translated message
      * @see MessageSource
      */
-    public static function t($category, $message, $params = [], $source = null, $language = null)
+    public static function t($category, $message, $params = [], $source = 'messages', $language = null)
     {
-        if ($source === null) {
-            $source = ($category === 'yii' || $category === 'zii') ? 'coreMessages' : 'messages';
-        }
-
         if (($source = self::getSource($source)) !== null) {
-            $message = $source->translate($category, $message, $language);
+            $message = $source->t($category, $message, $language);
         }
 
         if ($params === []) {
@@ -239,6 +247,10 @@ class Translate
         return $params !== [] ? strtr($message, $params) : $message;
     }
 
+    /**
+     * @param $source
+     * @return \Mindy\Locale\Loader\SourceLoader|null
+     */
     private static function getSource($source)
     {
         return array_key_exists($source, self::$_sources) ? self::$_sources[$source] : null;

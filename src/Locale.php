@@ -2,9 +2,9 @@
 
 namespace Mindy\Locale;
 
-use Mindy\Exception\Exception;
 use Mindy\Helper\Traits\Accessors;
 use Mindy\Helper\Traits\Configurator;
+use Mindy\Locale\Formatter\DateFormatter;
 
 /**
  * Locale represents the data relevant to a locale.
@@ -73,7 +73,7 @@ class Locale
         static $locales;
         if ($locales === null) {
             $locales = [];
-            $dataPath = self::$dataPath === null ? dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Data' : self::$dataPath;
+            $dataPath = self::$dataPath === null ? dirname(__FILE__) . DIRECTORY_SEPARATOR . 'data' : self::$dataPath;
             $folder = @opendir($dataPath);
             while (($file = @readdir($folder)) !== false) {
                 $fullPath = $dataPath . DIRECTORY_SEPARATOR . $file;
@@ -97,7 +97,7 @@ class Locale
     public function __construct($id)
     {
         $this->_id = self::getCanonicalID($id);
-        $dataPath = self::$dataPath === null ? dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Data' : self::$dataPath;
+        $dataPath = self::$dataPath === null ? dirname(__FILE__) . DIRECTORY_SEPARATOR . 'data' : self::$dataPath;
         $dataFile = $dataPath . DIRECTORY_SEPARATOR . $this->_id . '.php';
         if (is_file($dataFile)) {
             $this->_data = require($dataFile);
