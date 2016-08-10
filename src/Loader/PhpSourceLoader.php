@@ -2,6 +2,9 @@
 
 namespace Mindy\Locale\Loader;
 
+use Mindy\Helper\Alias;
+use ReflectionClass;
+
 class PhpSourceLoader extends SourceLoader
 {
     /**
@@ -9,6 +12,10 @@ class PhpSourceLoader extends SourceLoader
      * the "messages" subdirectory of the application directory (e.g. "protected/messages").
      */
     public $basePath = null;
+    /**
+     * @var array
+     */
+    public $extensionPaths = [];
     /**
      * @var array
      */
@@ -39,7 +46,20 @@ class PhpSourceLoader extends SourceLoader
     protected function getMessageFile($category, $language)
     {
         if (!isset($this->_files[$category][$language])) {
-            $this->_files[$category][$language] = $this->basePath . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . $category . '.php';
+            if (($pos = strpos($category, '.')) !== false) {
+                $extensionClass = substr($category, 0, $pos);
+                $extensionCategory = substr($category, $pos + 1);
+                // First check if there's an extension registered for this class.
+                if (isset($this->extensionPaths[$extensionClass])) {
+                    $this->_files[$category][$language] = Alias::get($this->extensionPaths[$extensionClass]) . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . $extensionCategory . '.php';
+                } else {
+                    // No extension registered, need to find it.
+                    $class = new ReflectionClass($extensionClass);
+                    $this->_files[$category][$language] = dirname($class->getFileName()) . DIRECTORY_SEPARATOR . 'messages' . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . $extensionCategory . '.php';
+                }
+            } else {
+                $this->_files[$category][$language] = $this->basePath . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . $category . '.php';
+            }
         }
         return $this->_files[$category][$language];
     }
