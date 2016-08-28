@@ -8,8 +8,7 @@
     }
   },
   "require": {
-    "php": ">=5.6",
-    "mindy/helper": "*"
+    "php": ">=7.0"
   },
   "require-dev": {
     "phpunit/phpunit": "*",
